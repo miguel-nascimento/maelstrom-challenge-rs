@@ -18,14 +18,15 @@ struct EchoNode {
 impl Node<(), EchoPayload> for EchoNode {
     fn step(&mut self, input: Message<EchoPayload>, output: &mut StdoutLock) -> anyhow::Result<()> {
         let mut reply = input.into_reply(Some(&mut self.id));
+        use EchoPayload::*;
         match reply.body.payload {
-            EchoPayload::Echo { echo } => reply.body.payload = EchoPayload::EchoOk { echo },
-            EchoPayload::EchoOk { .. } => {}
+            Echo { echo } => reply.body.payload = EchoOk { echo },
+            EchoOk { .. } => {}
         };
         reply.send(output)
     }
     fn from_init(_state: (), _init: &Init) -> anyhow::Result<Self> {
-        Ok(EchoNode { id: 1 })
+        Ok(Self { id: 1 })
     }
 }
 fn main() -> anyhow::Result<()> {

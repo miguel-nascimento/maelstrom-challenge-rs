@@ -1,6 +1,7 @@
 # Maelstrom problems solved with Rust
 
 See: [Fly.io / Maelstrom distributed system challenge](https://fly.io/dist-sys/1/)
+For more information, check out the [Maelstrom](https://github.com/jepsen-io/maelstrom) repository.
 
 ## Challenges
 - [x] [Echo](https://fly.io/dist-sys/1/)
